@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela do brasileirão</title>
+    <style>
+        body{
+            background-color: cadetblue;
+        }
+        table,th,td{
+            border: 1px solid black
+
+        }
+        thead{
+            font-weight: bold
+        }
+        #criarTabela, table{
+            background-color:antiquewhite;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="criarTabela" onclick="criarTabela()">Criar Tabela</button>
+        <div id="secaoTabela"></div>
+    </div>
+    
+
+    <script>
+        function criarTime(i)
+        {
+            var times = ["Flamengo", "Internacional", "Atlético Mineiro", "São Paulo", "Fluminense", "Grêmio", "Palmeiras", "Santos", "Athletico Paranaense", "Bragantino", "Ceará", "Corinthians", "Atlético Goianiense", "Bahia", "Sport Recife","Fortaleza", "Vasco da Gama", "Goiás", "Coritiba", "Botafogo"]
+            return times[i]
+        }
+
+        function criarPontos(i)
+        {
+            var pontos = [71, 70, 68, 66, 64, 59, 58, 54, 53, 53, 52, 51, 50, 44, 42, 41, 41, 37, 31, 27]
+            
+            return pontos[i]
+        }
+
+        function criarTabela()
+        {   var botao = document.getElementById("criarTabela")
+            var tabela = document.createElement("table")
+            let cabeca = document.createElement("thead")
+            let corpo = document.createElement("tbody")
+            let linha_titulo1 = document.createElement("th")
+            let linha_titulo2 = document.createElement("th")
+            let secaoTabela = document.querySelector("#secaoTabela")
+            secaoTabela.appendChild(tabela)
+            tabela.appendChild(cabeca)
+            cabeca.appendChild(linha_titulo1)
+            cabeca.appendChild(linha_titulo2)
+
+            linha_titulo1.innerText = "Time"
+            linha_titulo2.innerText = "Pontuação"
+
+            
+            // Preenche a tabela com dados
+            for (var i = 0; i < 20; i++) {
+                var row = tabela.insertRow(i);
+                    var cell = row.insertCell(0);
+                    time = criarTime(i)
+                    cell.innerHTML = time;
+                    var cell = row.insertCell(1);
+                    ponto = criarPontos(i)
+                    cell.innerHTML = ponto 
+                
+            }
+            botao.style.display = "none"
+        }
+    </script>
+</body>
+</html>
